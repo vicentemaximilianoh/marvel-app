@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Characters from "./components/characters/Characters";
+
+import "./App.scss";
 
 function App() {
   return (
