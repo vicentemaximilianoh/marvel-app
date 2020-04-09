@@ -1,28 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchCharacters, setPage } from "./characterActions";
+import { fetchSeries, setPage } from "./serieActions";
 import Page from "../shared/page/Page";
 import PageListItem from "../shared/page/page-list-item.model";
-import Character from "./character.model";
+import Serie from "./serie.model";
 
-function Characters({ results, limit, total, fetchCharacters, page, setPage, loading }: any) {
+function Series({ results, limit, total, fetchSeries, page, setPage, loading }: any) {
 
   let newResults: PageListItem[] = [];
-  results.map((item: Character): void => {
+  results.map((item: Serie): void => {
     newResults.push({
-      title: item.name,
+      title: item.title,
       imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
     });
   });
+  
   results = newResults;
 
   return (
-    <Page 
+    <Page
       results={results}
       limit={limit}
       total={total}
-      fetchData={fetchCharacters} 
+      fetchData={fetchSeries} 
       setPage={setPage} 
       page={page}>
     </Page>
@@ -30,11 +31,11 @@ function Characters({ results, limit, total, fetchCharacters, page, setPage, loa
 }
 
 const mapStateToProps = (state: any) => {
-  state = state.characters;
+  state = state.series;
   return {
     results: state.results,
-    total: state.total,
     limit: state.limit,
+    total: state.total,
     page: state.page,
     loading: state.loading
   };
@@ -42,7 +43,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    fetchCharacters: (page: any) => dispatch(fetchCharacters(page)),
+    fetchSeries: (page: any) => dispatch(fetchSeries(page)),
     setPage: (val: any) => dispatch(setPage(val))
   };
 };
@@ -50,4 +51,4 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Characters);
+)(Series);

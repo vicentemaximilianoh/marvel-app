@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchCharacters, setPage } from "./characterActions";
+import { fetchComics, setPage } from "./comicActions";
 import Page from "../shared/page/Page";
+import Comic from "./comic.model";
 import PageListItem from "../shared/page/page-list-item.model";
-import Character from "./character.model";
 
-function Characters({ results, limit, total, fetchCharacters, page, setPage, loading }: any) {
+function Comics({ results, limit, total, fetchComics, page, setPage, loading }: any) {
 
   let newResults: PageListItem[] = [];
-  results.map((item: Character): void => {
+  results.map((item: Comic): void => {
     newResults.push({
-      title: item.name,
+      title: item.title,
       imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
     });
   });
@@ -22,7 +22,7 @@ function Characters({ results, limit, total, fetchCharacters, page, setPage, loa
       results={results}
       limit={limit}
       total={total}
-      fetchData={fetchCharacters} 
+      fetchData={fetchComics} 
       setPage={setPage} 
       page={page}>
     </Page>
@@ -30,7 +30,7 @@ function Characters({ results, limit, total, fetchCharacters, page, setPage, loa
 }
 
 const mapStateToProps = (state: any) => {
-  state = state.characters;
+  state = state.comics;
   return {
     results: state.results,
     total: state.total,
@@ -42,7 +42,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    fetchCharacters: (page: any) => dispatch(fetchCharacters(page)),
+    fetchComics: (page: any) => dispatch(fetchComics(page)),
     setPage: (val: any) => dispatch(setPage(val))
   };
 };
@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Characters);
+)(Comics);
