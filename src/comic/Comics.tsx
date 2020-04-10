@@ -2,30 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchComics, setPage } from "./comicActions";
-import Page from "../shared/page/Page";
+import MvlPage from "../shared/mvl-page/MvlPage";
 import Comic from "./comic.model";
-import PageListItem from "../shared/page/page-list-item.model";
+import PageListItem from "../shared/mvl-page/page-list-item.model";
 
 function Comics({ results, limit, total, fetchComics, page, setPage, loading }: any) {
 
-  let newResults: PageListItem[] = [];
-  results.map((item: Comic): void => {
-    newResults.push({
+  let newResults: PageListItem[] = results.map((item: Comic): PageListItem => {
+    return {
       title: item.title,
       imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
-    });
+    };
   });
-  results = newResults;
 
   return (
-    <Page 
-      results={results}
+    <MvlPage 
+      results={newResults}
       limit={limit}
       total={total}
       fetchData={fetchComics} 
       setPage={setPage} 
       page={page}>
-    </Page>
+    </MvlPage>
   );
 }
 

@@ -2,31 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchSeries, setPage } from "./serieActions";
-import Page from "../shared/page/Page";
-import PageListItem from "../shared/page/page-list-item.model";
+import MvlPage from "../shared/mvl-page/MvlPage";
+import PageListItem from "../shared/mvl-page/page-list-item.model";
 import Serie from "./serie.model";
 
 function Series({ results, limit, total, fetchSeries, page, setPage, loading }: any) {
 
-  let newResults: PageListItem[] = [];
-  results.map((item: Serie): void => {
-    newResults.push({
+  let newResults: PageListItem[] = results.map((item: Serie): PageListItem => {
+    return {
       title: item.title,
       imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
-    });
+    };
   });
-  
-  results = newResults;
 
   return (
-    <Page
-      results={results}
+    <MvlPage
+      results={newResults}
       limit={limit}
       total={total}
       fetchData={fetchSeries} 
       setPage={setPage} 
       page={page}>
-    </Page>
+    </MvlPage>
   );
 }
 

@@ -2,30 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchCharacters, setPage } from "./characterActions";
-import Page from "../shared/page/Page";
-import PageListItem from "../shared/page/page-list-item.model";
+import MvlPage from "../shared/mvl-page/MvlPage";
+import PageListItem from "../shared/mvl-page/page-list-item.model";
 import Character from "./character.model";
 
 function Characters({ results, limit, total, fetchCharacters, page, setPage, loading }: any) {
 
-  let newResults: PageListItem[] = [];
-  results.map((item: Character): void => {
-    newResults.push({
+  let newResults: PageListItem[] = results.map((item: Character): PageListItem => {
+    return {
       title: item.name,
       imgSrc: `${item.thumbnail.path}.${item.thumbnail.extension}`
-    });
+    };
   });
-  results = newResults;
 
   return (
-    <Page 
-      results={results}
+    <MvlPage 
+      results={newResults}
       limit={limit}
       total={total}
       fetchData={fetchCharacters} 
       setPage={setPage} 
       page={page}>
-    </Page>
+    </MvlPage>
   );
 }
 
