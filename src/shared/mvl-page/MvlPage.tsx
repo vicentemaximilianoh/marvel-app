@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 
 import MvlPagination from '../mvl-pagination/MvlPagination';
 
-function MvlPage({ results, limit, total, fetchData, page, setPage, loading }: any) {
+function MvlPage({ results, limit, total, fetchData, page, setPage, loading, title }: any) {
   useEffect(() => {
     fetchData(page);
   }, [fetchData, page]);
@@ -49,6 +49,8 @@ function MvlPage({ results, limit, total, fetchData, page, setPage, loading }: a
 
   return (
     <Container fluid="md">
+      <h2>{title}</h2>
+
       <Row className="p-2">{dataList}</Row>
 
       {/* Pagination */}

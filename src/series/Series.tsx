@@ -17,6 +17,7 @@ function Series({ results, limit, total, fetchSeries, page, setPage, loading }: 
 
   return (
     <MvlPage
+      title="Series"
       results={newResults}
       limit={limit}
       total={total}

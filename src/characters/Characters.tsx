@@ -17,6 +17,7 @@ function Characters({ results, limit, total, fetchCharacters, page, setPage, loa
 
   return (
     <MvlPage 
+      title="Characters"
       results={newResults}
       limit={limit}
       total={total}

@@ -6,11 +6,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import characters from "../characters/characterReducer";
 import comics from "../comic/comicReducer";
 import series from "../series/seriesReducer";
+import auth from "../auth/AuthReducers";
 
 const reducers = combineReducers({
   characters,
   comics,
-  series
+  series,
+  auth
 });
 
 const middleware = composeWithDevTools(applyMiddleware(thunk, createLogger()));

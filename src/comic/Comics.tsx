@@ -17,6 +17,7 @@ function Comics({ results, limit, total, fetchComics, page, setPage, loading }: 
 
   return (
     <MvlPage 
+      title="Comics"
       results={newResults}
       limit={limit}
       total={total}

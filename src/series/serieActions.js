@@ -16,16 +16,14 @@ function seriesFetchRequest() {
 function seriesFetchSuccess(data) {
   return {
     type: SERIES_FETCH_SUCCESS,
-    payload: data,
-    loading: false
+    payload: data
   };
 }
 
 function seriesFetchFailure(error) {
   return {
     type: SERIES_FETCH_FAILURE,
-    payload: error,
-    loading: false
+    payload: error
   };
 }
 
