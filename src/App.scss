@@ -1,7 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
+$grid-gutter-width: 20px !default;
+
 .App {
-  text-align: center;
   min-height: 100vh;
   // background-color: #282c34;
 }

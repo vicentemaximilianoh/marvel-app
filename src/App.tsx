@@ -8,7 +8,9 @@ import Login from "./login/Login";
 
 import "./App.scss";
 import { connect } from "react-redux";
-import { logout } from "./auth/authActions";
+import { authLogout } from "./auth/authActions";
+
+import PrivateRoute from './auth/PrivateRoute';
 
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
@@ -46,24 +48,16 @@ function App({isAuthenticated, logoutUser, user}: any) {
       <hr/>
 
     <Switch>
-      <Route exact path="/">
-        <Characters />
-      </Route>
-      <Route path="/series">
-        <Series />
-      </Route>
-      <Route path="/comics">
-        <Comics />
-      </Route>
+      <PrivateRoute path="/" component={Characters} authed={isAuthenticated} />
+      <PrivateRoute path="/series" component={Series} authed={isAuthenticated} />
+      <PrivateRoute path="/comics" component={Comics} authed={isAuthenticated} />
       <Route path="/login">
         <Login />
       </Route>
     </Switch>
     </div>
   ) : (
-    <div>
       <Login />
-    </div>
   );
 
   return (
@@ -77,7 +71,6 @@ function App({isAuthenticated, logoutUser, user}: any) {
 
 const mapPropsToState = (state: any) => {
   const stateAuth = state.auth;
-  console.log('auth', state.auth);
   return {
     isAuthenticated: stateAuth.isAuthenticated,
     user: stateAuth.user
@@ -86,7 +79,7 @@ const mapPropsToState = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    logoutUser: () => dispatch(logout())
+    logoutUser: () => dispatch(authLogout())
   }
 }
 

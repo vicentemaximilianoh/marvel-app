@@ -7,6 +7,8 @@ import Card from "react-bootstrap/Card";
 
 import MvlPagination from '../mvl-pagination/MvlPagination';
 
+import './MvlPage.scss';
+
 function MvlPage({ results, limit, total, fetchData, page, setPage, loading, title }: any) {
   useEffect(() => {
     fetchData(page);
@@ -18,14 +20,15 @@ function MvlPage({ results, limit, total, fetchData, page, setPage, loading, tit
     results &&
     results.map((item: any, key: any) => {
       return (
-        <Col sm={3} key={key}>
-          <Card style={{ width: "18rem" }}>
+        <Col className="CardContainer" sm={3} key={key}>
+          <Card className="Card">
             <Card.Img
+              className="CardImg"
               variant="top"
               src={item.imgSrc}
             />
             <Card.Body>
-              <Card.Title>{item.title}</Card.Title>
+              <Card.Title title={item.title} className="text-truncate">{item.title}</Card.Title>
               {/* <Card.Text>
                     Some quick example text to build on the card title and make up
                     the bulk of the card's content.
@@ -48,7 +51,7 @@ function MvlPage({ results, limit, total, fetchData, page, setPage, loading, tit
     ) : null;
 
   return (
-    <Container fluid="md">
+    <Container fluid="md" className="MvlPage">
       <h2>{title}</h2>
 
       <Row className="p-2">{dataList}</Row>

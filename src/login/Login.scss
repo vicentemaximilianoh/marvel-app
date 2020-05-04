@@ -1,4 +1,11 @@
 
 .Login {
-    padding-top: 200px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.LoginTitle {
+        margin-bottom: 40px;
+    }
 }

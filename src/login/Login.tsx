@@ -2,7 +2,7 @@
 import React, { FormEvent } from "react";
 import { connect } from "react-redux";
 
-import { loginUser } from "../auth/authActions";
+import { authLogin } from "../auth/authActions";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -24,19 +24,22 @@ function Login({authUser}: any) {
 
     return (
         <Container className="Login" fluid="sm">
-            <Form onSubmit={handleLogin}>
-                <Form.Group controlId="username">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="email" required />
-                </Form.Group>
+            <div className="LoginContent">
+                <h1 className="LoginTitle">Marvel App</h1>
+                <Form onSubmit={handleLogin} className="LoginForm">
+                    <Form.Group controlId="username">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="email" required />
+                    </Form.Group>
 
-                <Form.Group controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" required />
-                </Form.Group>
+                    <Form.Group controlId="password">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" required />
+                    </Form.Group>
 
-                <Button variant="primary" type="submit">Login</Button>
-            </Form>
+                    <Button variant="primary" type="submit">Login</Button>
+                </Form>
+            </div>
         </Container>
     );
 }
@@ -50,7 +53,7 @@ const mapPropsToState = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        authUser: (user: {}) => dispatch(loginUser(user)) 
+        authUser: (user: {}) => dispatch(authLogin(user)) 
     };
 }
 
