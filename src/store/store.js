@@ -6,7 +6,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import characters from "../characters/characterReducer";
 import comics from "../comic/comicReducer";
 import series from "../series/seriesReducer";
-import auth from "../auth/AuthReducers";
+import auth from "../auth/authReducer";
 
 const reducers = combineReducers({
   characters,

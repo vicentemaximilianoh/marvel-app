@@ -8,7 +8,7 @@ import {
     AUTH_LOGOUT_FAILURE,
     AUTH_LOGOUT_REQUEST,
     AUTH_LOGOUT_SUCCESS
-} from '../auth/authActions';
+} from './authActions';
 
 const INITIAL_STATE = {
     isAuthenticated: !!localStorage.getItem('jwt_key'),

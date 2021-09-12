@@ -35,6 +35,8 @@ function get(endpoint, params = {}) {
   });
 }
 
-export default {
+const api = {
   get
 };
+
+export default api;
