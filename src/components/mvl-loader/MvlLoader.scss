@@ -1,0 +1,35 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.MvlLoader {
+  width: 100vw;
+  height: 100vh;
+ z-index: 999;
+ opacity: 0.65;
+ position: fixed;
+ top: 0;
+ left: 0;
+ background-color: white;
+
+  .MvlLoaderSpinner {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #0b5fb8; /* Black */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+}

@@ -15,6 +15,7 @@ import PrivateRoute from './auth/PrivateRoute';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import MvlLoader from "./components/mvl-loader/MvlLoader";
 
 function App({isAuthenticated, logoutUser, user}: any) {
 
@@ -63,6 +64,7 @@ function App({isAuthenticated, logoutUser, user}: any) {
   return (
     <Router>
       <div className="App">
+        <MvlLoader/>
         {nav}
       </div>
     </Router>
