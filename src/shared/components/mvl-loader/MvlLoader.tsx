@@ -1,5 +1,5 @@
 import React from "react";
-import { useAxiosLoader } from "../../hooks/use-axios-loader";
+import { useAxiosLoader } from "../../../hooks/use-axios-loader";
 import './MvlLoader.scss';
 
 function MvlLoader() {

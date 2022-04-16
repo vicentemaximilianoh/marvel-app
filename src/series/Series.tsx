@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchSeries, setPage } from "./serieActions";
-import MvlPage from "../shared/mvl-page/MvlPage";
-import PageListItem from "../shared/mvl-page/page-list-item.model";
+import MvlPage from "../shared/components/mvl-page/MvlPage";
+import PageListItem from "../shared/components/mvl-page/page-list-item.model";
 import Serie from "./serie.model";
 
 function Series({ results, limit, total, fetchSeries, page, setPage, loading }: any) {

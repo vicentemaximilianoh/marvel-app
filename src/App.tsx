@@ -15,9 +15,10 @@ import PrivateRoute from './auth/PrivateRoute';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import MvlLoader from "./components/mvl-loader/MvlLoader";
+import MvlLoader from "./shared/components/mvl-loader/MvlLoader";
+import MvlModal from "./shared/components/modal/MvlModal";
 
-function App({isAuthenticated, logoutUser, user}: any) {
+function App({isAuthenticated, logoutUser, user, modal}: any) {
 
   const handleLogout = () => {
     logoutUser();
@@ -55,7 +56,15 @@ function App({isAuthenticated, logoutUser, user}: any) {
       <Route path="/login">
         <Login />
       </Route>
-    </Switch>
+      </Switch>
+
+      <MvlModal
+        show={modal.show}
+        onClose={modal.onClose}
+        header={modal.header}
+        body={modal.body}
+        footer={modal.footer}
+      ></MvlModal>
     </div>
   ) : (
       <Login />
@@ -73,9 +82,12 @@ function App({isAuthenticated, logoutUser, user}: any) {
 
 const mapPropsToState = (state: any) => {
   const stateAuth = state.auth;
+  const stateModal = state.modal;
+  debugger
   return {
     isAuthenticated: stateAuth.isAuthenticated,
-    user: stateAuth.user
+    user: stateAuth.user,
+    modal: stateModal
   };
 };
 

@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchComics, setPage } from "./comicActions";
-import MvlPage from "../shared/mvl-page/MvlPage";
+import MvlPage from "../shared/components/mvl-page/MvlPage";
 import Comic from "./comic.model";
-import PageListItem from "../shared/mvl-page/page-list-item.model";
+import PageListItem from "../shared/components/mvl-page/page-list-item.model";
 
 function Comics({ results, limit, total, fetchComics, page, setPage, loading }: any) {
 

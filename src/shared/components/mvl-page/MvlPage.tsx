@@ -9,7 +9,7 @@ import MvlPagination from '../mvl-pagination/MvlPagination';
 
 import './MvlPage.scss';
 
-function MvlPage({ results, limit, total, fetchData, page, setPage, loading, title }: any) {
+function MvlPage({ results, limit, total, fetchData, page, setPage, loading, title, onClickItem }: any) {
   useEffect(() => {
     fetchData(page);
   }, [fetchData, page]);
@@ -21,7 +21,7 @@ function MvlPage({ results, limit, total, fetchData, page, setPage, loading, tit
     results.map((item: any, key: any) => {
       return (
         <Col className="CardContainer" sm={3} key={key}>
-          <Card className="Card">
+          <Card className="Card" onClick={() => onClickItem(item)}>
             <Card.Img
               className="CardImg"
               variant="top"
