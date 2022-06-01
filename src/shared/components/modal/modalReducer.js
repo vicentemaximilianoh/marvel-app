@@ -7,10 +7,9 @@ import {
 const INITIAL_STATE = {
     show: false,
     onClose: null,
-    // title: '',
-    header: null,
+    title: '',
     body: null,
-    footer: null
+    actions: null
 }
 
 const modalReducer = (state = INITIAL_STATE, action) => {
@@ -21,14 +20,13 @@ const modalReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 show: true,
                 onClose: action.payload.onClose,
-                header: action.payload.header,
+                title: action.payload.title,
                 body: action.payload.body,
-                footer: action.payload.footer
+                actions: action.payload.actions
             }
             break;
         case MODAL_HIDE:
 
-    debugger
             state = {
                 ...state,
                 ...INITIAL_STATE

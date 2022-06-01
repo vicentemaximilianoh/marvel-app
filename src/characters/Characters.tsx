@@ -19,22 +19,25 @@ function Characters({ results, limit, total, fetchCharacters, page, setPage, ope
 
   const onCloseModal = () => {
     closeModal();
-    debugger
   }
 
-  const headerModal = (<div>header</div>);
-  const bodyModal = (<div>body</div>);
-  const footerModal = (<div>footer</div>);
 
   const onClickItem = (item: any) => {
-    console.log(item);
+    const bodyModal = (
+      <div>
+        <h3>{item.name}</h3>
+      </div>
+    );
     
     openModal({
-      title: 'test',
+      title: item.name,
       onClose: onCloseModal,
-      header: headerModal,
       body: bodyModal,
-      footer: footerModal
+      // actions: [{
+      //   label: 'Test',
+      //   onClick: () => { console.log('on click!') },
+      //   variant: 'primary'
+      // }]
     })
   }
 

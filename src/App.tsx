@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 
 import Characters from "./characters/Characters";
 import Comics from "./comic/Comics";
@@ -30,10 +30,16 @@ function App({isAuthenticated, logoutUser, user, modal}: any) {
       <Navbar.Brand href="#home">Marvel API</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link><Link to="/">Characters</Link></Nav.Link>
-          <Nav.Link><Link to="/comics">Comics</Link></Nav.Link>
-          <Nav.Link><Link to="/series">Series</Link></Nav.Link>
+          <Nav className="mr-auto">
+            <Nav.Item as="li">
+              <Nav.Link as={NavLink} to="/characters">Characters</Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link as={NavLink} to="/comics">Comics</Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link as={NavLink} to="/series">Series</Nav.Link>
+            </Nav.Item>
         </Nav>
 
         <Nav>
@@ -61,9 +67,9 @@ function App({isAuthenticated, logoutUser, user, modal}: any) {
       <MvlModal
         show={modal.show}
         onClose={modal.onClose}
-        header={modal.header}
+        title={modal.title}
         body={modal.body}
-        footer={modal.footer}
+        actions={modal.actions}
       ></MvlModal>
     </div>
   ) : (
@@ -83,7 +89,7 @@ function App({isAuthenticated, logoutUser, user, modal}: any) {
 const mapPropsToState = (state: any) => {
   const stateAuth = state.auth;
   const stateModal = state.modal;
-  debugger
+
   return {
     isAuthenticated: stateAuth.isAuthenticated,
     user: stateAuth.user,

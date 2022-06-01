@@ -1,0 +1,19 @@
+
+.Card {
+    // transition: all 500ms ease-in-out;
+    transition: transform 500ms;
+
+    &:hover {
+        cursor: pointer;
+        // margin-top: -10px;
+        // box-shadow: 0px 12px 30px 0px rgba(0, 0, 0, 0.2);
+        // transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+
+        z-index: 1;
+        transform: scale(1.2);
+    }
+
+    .CardImg {
+        height: 256px;
+    }
+}

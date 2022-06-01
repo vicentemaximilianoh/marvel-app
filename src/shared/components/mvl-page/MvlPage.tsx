@@ -3,11 +3,11 @@ import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 
 import MvlPagination from '../mvl-pagination/MvlPagination';
 
 import './MvlPage.scss';
+import MvlCard from "../mvl-card/MvlCard";
 
 function MvlPage({ results, limit, total, fetchData, page, setPage, loading, title, onClickItem }: any) {
   useEffect(() => {
@@ -21,20 +21,10 @@ function MvlPage({ results, limit, total, fetchData, page, setPage, loading, tit
     results.map((item: any, key: any) => {
       return (
         <Col className="CardContainer" sm={3} key={key}>
-          <Card className="Card" onClick={() => onClickItem(item)}>
-            <Card.Img
-              className="CardImg"
-              variant="top"
-              src={item.imgSrc}
-            />
-            <Card.Body>
-              <Card.Title title={item.title} className="text-truncate">{item.title}</Card.Title>
-              {/* <Card.Text>
-                    Some quick example text to build on the card title and make up
-                    the bulk of the card's content.
-                  </Card.Text> */}
-            </Card.Body>
-          </Card>
+          <MvlCard
+            onClickCard={() => onClickItem(item)}
+            title={item.title}
+            imgSrc={item.imgSrc}></MvlCard>
         </Col>
       );
     });
